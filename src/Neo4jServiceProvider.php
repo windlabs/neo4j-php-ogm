@@ -65,8 +65,12 @@ class Neo4jServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
+            $facadesDist = base_path('Facades');
+            if (!is_dir($facadesDist)) {
+                mkdir($facadesDist, 0755);
+            }
             $this->publishes([__DIR__.'/../config' => config_path()], 'graphaware-neo4j-config');
-            $this->publishes([__DIR__.'/../facades' => base_path()], 'graphaware-neo4j-config');
+            $this->publishes([__DIR__.'/../facades' => $facadesDist], 'graphaware-neo4j-config');
         }
     }
 }
