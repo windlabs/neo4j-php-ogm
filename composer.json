@@ -10,7 +10,8 @@
         "mapping",
         "annotations",
         "database",
-        "cypher"
+        "cypher",
+        "laravel"
     ],
     "homepage": "https://github.com/graphaware/neo4j-php-ogm",
     "authors": [{
@@ -48,6 +49,12 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "GraphAware\\Neo4j\\OGM\\Neo4jServiceProvider"
+            ]
         }
+
     }
 }
