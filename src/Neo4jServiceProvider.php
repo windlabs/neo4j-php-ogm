@@ -65,7 +65,7 @@ class Neo4jServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $facadesDist = base_path('Facades');
+            $facadesDist = app_path('Facades');
             if (!is_dir($facadesDist)) {
                 mkdir($facadesDist, 0755);
             }
