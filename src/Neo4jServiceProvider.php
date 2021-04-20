@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace GraphAware\Neo4j\OGM;
 
 use Illuminate\Support\ServiceProvider;
 use GraphAware\Neo4j\OGM\EntityManager;
@@ -16,7 +16,7 @@ class Neo4jServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->registerPublishing();
+
     }
 
     /**
@@ -35,7 +35,7 @@ class Neo4jServiceProvider extends ServiceProvider
             return EntityManager::create($cypherDsn);
 
         });
-
+        $this->registerPublishing();
 //        $this->app->singleton('neo4j.client', function () {
 //            $cypherDsn = sprintf('http://%s:%s@%s:%s', config('neo4j.username'),
 //                config('neo4j.password'),config('neo4j.host'),config('neo4j.port'));
