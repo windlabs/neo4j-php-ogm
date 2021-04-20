@@ -118,7 +118,7 @@ class EntityPersister
         }
         $id = $this->classMetadata->getIdValue($object);
 
-        $query = 'MATCH (n) WHERE id(n) = {id} SET n += {props}';
+        $query = 'MATCH (n) WHERE id(n) = $id SET n += $props';
         if (!empty($extraLabels)) {
             foreach ($extraLabels as $label) {
                 $query .= ' SET n:'.$label;
@@ -153,7 +153,7 @@ class EntityPersister
 
     public function getDetachDeleteQuery($object)
     {
-        $query = 'MATCH (n) WHERE id(n) = {id} DETACH DELETE n';
+        $query = 'MATCH (n) WHERE id(n) = $id DETACH DELETE n';
         $id = $this->classMetadata->getIdValue($object);
 
         return Statement::create($query, ['id' => $id]);
@@ -161,7 +161,7 @@ class EntityPersister
 
     public function getDeleteQuery($object)
     {
-        $query = 'MATCH (n) WHERE id(n) = {id} DELETE n';
+        $query = 'MATCH (n) WHERE id(n) = $id DELETE n';
         $id = $this->classMetadata->getIdValue($object);
 
         return Statement::create($query, ['id' => $id]);

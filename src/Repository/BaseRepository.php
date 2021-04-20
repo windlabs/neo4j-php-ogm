@@ -118,7 +118,7 @@ class BaseRepository implements ObjectRepository, Selectable
         $whereClause = $criteria->getWhereExpression();
         if (null !== $whereClause) {
             if (Comparison::EQ !== $whereClause->getOperator()) {
-                throw new \InvalidArgumentException(sprintf('Support for Selectable is limited to the EQUALS "=" operator, 
+                throw new \InvalidArgumentException(sprintf('Support for Selectable is limited to the EQUALS "=" operator,
                  % given', $whereClause->getOperator()));
             }
 
